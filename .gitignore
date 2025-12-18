@@ -1,0 +1,13 @@
+# Ignorar pastas da IDE
+.vscode/
+.idea/
+*.swp
+
+# Ignorar arquivos compilados (binários)
+bin/
+target/
+*.class
+
+# Ignorar arquivos de sistema
+.DS_Store
+Thumbs.db

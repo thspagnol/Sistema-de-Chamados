@@ -91,4 +91,12 @@ public class Chamado {
         System.out.println("Data Abertura: " + this.dataAbertura);
         System.out.println("---------------------------");
     }
+    public String paraLinhaCSV() {
+    return this.id + ";" +
+           this.titulo + ";" +
+           this.descricao + ";" +
+           this.prioridade + ";" +
+           this.solicitante + ";" +
+           this.status;
+    } 
 } 

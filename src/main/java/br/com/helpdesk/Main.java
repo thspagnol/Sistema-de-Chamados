@@ -90,10 +90,21 @@ public class Main {
 
                     int opcaoAcao = Integer.parseInt(scanner.nextLine());
 
+                    // if (opcaoAcao == 1) {
+                    //     service.iniciarAtendimento(chamadoEncontrado);
+                    // } else if (opcaoAcao == 2) {
+                    //     service.finalizarChamado(chamadoEncontrado);
+                    // } else {
+                    //     System.out.println("Opção inválida.");
+                    // }
+                    // break;
+
                     if (opcaoAcao == 1) {
                         service.iniciarAtendimento(chamadoEncontrado);
+                        repository.atualizarArquivo();
                     } else if (opcaoAcao == 2) {
                         service.finalizarChamado(chamadoEncontrado);
+                        repository.atualizarArquivo();
                     } else {
                         System.out.println("Opção inválida.");
                     }

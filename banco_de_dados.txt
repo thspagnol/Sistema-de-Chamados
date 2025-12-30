@@ -1,3 +1,0 @@
-1;pc nao desliga;nao desliga;MEDIA;thiago;FECHADO
-2;pc nao liga;nao liga;MEDIA;thiago;ABERTO
-3;teste de persistencia;descricao;MEDIA;thiago;ABERTO

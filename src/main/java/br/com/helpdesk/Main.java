@@ -5,6 +5,7 @@ import br.com.helpdesk.model.Chamado;
 import br.com.helpdesk.model.Prioridade;
 import br.com.helpdesk.repository.ChamadoRepository;
 import br.com.helpdesk.service.ChamadoService;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -58,12 +59,30 @@ public class Main {
                     break;
 
                 case 2:
-                    System.out.println("\n--- Lista de Chamados ---");
-                    if (repository.buscarTodos().isEmpty()) {
-                        System.out.println("Nenhum chamado cadastrado.");
+                    System.out.println("\n--- LISTAGEM ---");
+                    System.out.println("1 - Ver Todos");
+                    System.out.println("2 - Ver Apenas Abertos");
+                    System.out.print("Opção: ");
+
+                    int tipoListagem = Integer.parseInt(scanner.nextLine());
+                    List<Chamado> listaParaMostrar;
+
+                    if (tipoListagem == 2) {
+                        listaParaMostrar = repository.buscarAbertos();
+                        System.out.println("Exibindo apenas chamados ABERTOS:");
                     } else {
-                        for (Chamado c : repository.buscarTodos()) {
-                            System.out.println("#" + c.getId() + " - " + c.getTitulo() + "[" + c.getStatus() + "]");
+                        listaParaMostrar = repository.buscarTodos();
+                        System.out.println("Exibindo TODOS os chamados:");
+                    }
+
+                    if (listaParaMostrar.isEmpty()) {
+                        System.out.println("Nenhum registro encontrado.");
+                    } else {
+                        for (Chamado c : listaParaMostrar) {
+                            String destaque = (c.getPrioridade() == Prioridade.CRITICA) ? "*" : " ";
+
+                            System.out.printf("%s #%d - %s [%s] (%s)\n",
+                                destaque, c.getId(), c.getTitulo(), c.getStatus(), c.getPrioridade());
                         }
                     }
                     break;
@@ -89,15 +108,6 @@ public class Main {
                     System.out.print("Opção: ");
 
                     int opcaoAcao = Integer.parseInt(scanner.nextLine());
-
-                    // if (opcaoAcao == 1) {
-                    //     service.iniciarAtendimento(chamadoEncontrado);
-                    // } else if (opcaoAcao == 2) {
-                    //     service.finalizarChamado(chamadoEncontrado);
-                    // } else {
-                    //     System.out.println("Opção inválida.");
-                    // }
-                    // break;
 
                     if (opcaoAcao == 1) {
                         service.iniciarAtendimento(chamadoEncontrado);

@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "titulo": "pc nao liga",
+    "descricao": "nao liga",
+    "dataAbertura": "2025-12-30T05:17:00.825771700",
+    "prioridade": "MEDIA",
+    "status": "ABERTO",
+    "solicitante": "thiago"
+  }
+]
